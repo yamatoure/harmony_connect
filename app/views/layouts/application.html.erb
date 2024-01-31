@@ -22,7 +22,7 @@
             <%= link_to "グループを探す", root_path, class: :nav__btn %>
             <%= link_to "メンバーを探す", root_path, class: :nav__btn %>
             <% if user_signed_in? %>
-              <%= link_to "マイページ", "/users/#{current_user.id}", class: :nav__btn %>
+              <%= link_to "マイページ", edit_user_path(current_user), class: :nav__btn %>
             <% else %>
               <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
             <% end %>
