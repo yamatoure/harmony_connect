@@ -4,6 +4,7 @@
       <h2 class="page-heading">ユーザー新規登録</h2>
 
         <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
           <%= f.label :name, "ユーザー名" %><br />
