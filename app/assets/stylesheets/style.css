@@ -84,7 +84,6 @@ a {
 
 /* フォーム周り */
 
-/*
 
 .form__wrapper{
   min-height: calc(100vh - 161px);
@@ -121,7 +120,6 @@ a {
   cursor: pointer;
 }
 
-*/
 
 /* トップページ */
 
@@ -147,7 +145,7 @@ a {
   min-height: calc(100vh - 113px);
   text-align: center;
 }
-h2 {
+.top h2 {
   font-size: 3em;
 }
 .itemlist {
@@ -370,4 +368,22 @@ h2 {
   .table{
     width: 100%;
   }
+}
+
+#error_explanation {
+  margin: 20px 0;
+}
+#error_explanation h2 {
+  margin-bottom: 10px;
+  color: #d65f4c;
+  font-size: 14px;
+}
+#error_explanation ul {
+  margin: 0;
+  list-style: square;
+}
+#error_explanation li {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
 }

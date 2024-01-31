@@ -1,0 +1,27 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+      <h2 class="page-heading">ユーザー編集</h2>
+
+        <%= form_with model: current_user, local: true do |f| %>
+
+        <div class="field">
+          <%= f.label :name, "ユーザー名" %><br />
+          <%= f.text_field :name, id:"user_name" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %><br />
+          <%= f.email_field :email, id:"user_email", autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "更新する", class: :form__btn  %>
+        </div>
+
+        <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :form__btn%>
+        <%= link_to "アカウント削除", user_path, data: { turbo_method: :delete }, class: :form__btn%>
+      <% end %>
+    </div>
+  </div>
+</div>
