@@ -147,7 +147,7 @@ a {
   min-height: calc(100vh - 113px);
   text-align: center;
 }
-h2 {
+.top h2 {
   font-size: 3em;
 }
 .itemlist {
