@@ -1,0 +1,25 @@
+<%= form_with model: group, local: true do |f|%>
+  <div class="field">
+    <%= f.label :title, "タイトル" %><br />
+    <%= f.text_field :title, id:"group_title" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, "内容" %><br />
+    <%= f.text_area :content, class: :form__text, id:"group_content" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :area, "活動地域" %><br />
+    <%= f.check_box :area, id:"group_area" %>
+  </div>
+
+    <div class="field">
+    <%= f.label :part, "募集パート" %><br />
+    <%= f.check_box :part, id:"group_part" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>
