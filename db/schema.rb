@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_05_141051) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_05_150519) do
   create_table "areas", charset: "utf8", force: :cascade do |t|
     t.string "area", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "group_areas", charset: "utf8", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "area_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_group_areas_on_area_id"
+    t.index ["group_id"], name: "index_group_areas_on_group_id"
   end
 
   create_table "groups", charset: "utf8", force: :cascade do |t|
@@ -39,5 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_05_141051) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "group_areas", "areas"
+  add_foreign_key "group_areas", "groups"
   add_foreign_key "groups", "users"
 end
