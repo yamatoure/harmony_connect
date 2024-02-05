@@ -120,6 +120,13 @@ a {
   cursor: pointer;
 }
 
+.area_group {
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
 
 /* トップページ */
 

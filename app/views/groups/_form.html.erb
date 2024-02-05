@@ -11,7 +11,15 @@
 
   <div class="field">
     <%= f.label :area, "活動地域" %><br />
-    <%= f.check_box :area, id:"group_area" %>
+    <% Area.all.each_slice(8) do |area_slice| %>
+      <div class="area_group">
+        <%= f.collection_check_boxes :area_ids, area_slice, :id, :area do |b|%>
+          <span class="checkbox">
+            <%= b.label { b.check_box + b.text } %>
+          </span>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
     <div class="field">
