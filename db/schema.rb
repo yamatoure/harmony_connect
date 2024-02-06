@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_06_135102) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_06_140728) do
   create_table "areas", charset: "utf8", force: :cascade do |t|
     t.string "area", null: false
     t.datetime "created_at", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_135102) do
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_group_areas_on_area_id"
     t.index ["group_id"], name: "index_group_areas_on_group_id"
+  end
+
+  create_table "group_parts", charset: "utf8", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "part_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_parts_on_group_id"
+    t.index ["part_id"], name: "index_group_parts_on_part_id"
   end
 
   create_table "groups", charset: "utf8", force: :cascade do |t|
@@ -56,5 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_135102) do
 
   add_foreign_key "group_areas", "areas"
   add_foreign_key "group_areas", "groups"
+  add_foreign_key "group_parts", "groups"
+  add_foreign_key "group_parts", "parts"
   add_foreign_key "groups", "users"
 end
