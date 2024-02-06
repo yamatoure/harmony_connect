@@ -1,0 +1,29 @@
+<div class="main">
+  <div class="inner">
+    <div class="group__wrapper">
+      <h1><%= @group.title %></h1>
+        <div class="group__detail">
+          <p class="detail__title">募集内容</p>
+          <p class="detail__message">
+            <%= @group.content %>
+          </p>
+        </div>
+        <div class="group__detail">
+          <p class="detail__title">活動地域</p>
+          <p class="detail__message">
+            <% @areas.each do |area| %>
+              <%= area.area %>
+            <% end %>
+          </p>
+        </div>
+        <div class="group__detail">
+          <p class="detail__title">募集パート</p>
+          <p class="detail__message">
+            <% @parts.each do |part| %>
+              <%= part.part %>
+            <% end %>
+          </p>
+        </div>
+    </div>
+  </div>
+</div>

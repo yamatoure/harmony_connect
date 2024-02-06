@@ -17,6 +17,12 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    @group = Group.find(params[:id])
+    @areas = @group.areas
+    @parts = @group.parts
+  end
+
   private
   def group_params
     params.require(:group).permit(:title, :content, area_ids: [], part_ids: []).merge(user_id: current_user.id)
