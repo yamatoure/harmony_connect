@@ -12,8 +12,8 @@
   <div class="field">
     <%= f.label :area, "活動地域" %><br />
     <% Area.all.each_slice(8) do |area_slice| %>
-      <div class="area_group">
-        <%= f.collection_check_boxes :area_ids, area_slice, :id, :area do |b|%>
+      <div class="checkbox_group">
+        <%= f.collection_check_boxes :area_ids, area_slice, :id, :area do |b| %>
           <span class="checkbox">
             <%= b.label { b.check_box + b.text } %>
           </span>
@@ -24,10 +24,16 @@
 
     <div class="field">
     <%= f.label :part, "募集パート" %><br />
-    <%= f.check_box :part, id:"group_part" %>
+    <div class="checkbox_group">
+      <%= f.collection_check_boxes :part_ids, Part.all, :id, :part do |b| %>
+          <span class="checkbox">
+            <%= b.label { b.check_box + b.text } %>
+          </span>      
+      <% end %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit "保存する", class: :form__btn  %>
+    <%= f.submit "投稿する", class: :form__btn  %>
   </div>
 <% end %>
