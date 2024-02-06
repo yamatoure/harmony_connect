@@ -1,4 +1,5 @@
 class Group < ApplicationRecord
+  belongs_to :user
   has_many :group_areas
   has_many :areas, through: :group_areas
   has_many :group_parts
