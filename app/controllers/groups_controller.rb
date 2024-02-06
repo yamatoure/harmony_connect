@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     
   end
@@ -8,6 +9,6 @@ class GroupsController < ApplicationController
   end
 
   def create
-        
+
   end
 end
