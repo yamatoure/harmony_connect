@@ -30,6 +30,12 @@
             <%= @group.user.name %>
           </p>
         </div>
+        <% if user_signed_in? && current_user.id == @group.user_id %>
+          <div class="group__manage">
+            <%= link_to "編集する", edit_group_path, class: :group__btn %>
+            <%= link_to "削除する", group_path, data: { turbo_method: :delete }, class: :group__btn %>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

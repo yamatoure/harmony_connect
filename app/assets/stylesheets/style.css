@@ -232,6 +232,27 @@ a {
 .detail__message{
   font-size: 20px;
 }
+.group__manage{
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+.group__btn{
+  display: block;
+  padding: 0.4em 1.6em;
+  font-size: 1em;
+  color: #999;
+  text-decoration: none;
+  user-select: none;
+  border: 1px #999 solid;
+  border-radius: 3px;
+  transition: 0.4s ease;
+  margin: 0 4px;
+}
+.group__btn:hover{
+  color: #fff;
+  background: #999;
+}
 /* ユーザーページ */
 
 /*
