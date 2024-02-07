@@ -1,0 +1,41 @@
+<div class="main">
+  <div class="inner">
+    <div class="group__wrapper">
+      <h1><%= @group.title %></h1>
+        <div class="group__detail">
+          <p class="detail__title">募集内容</p>
+          <p class="detail__message">
+            <%= @group.content %>
+          </p>
+        </div>
+        <div class="group__detail">
+          <p class="detail__title">活動地域</p>
+          <p class="detail__message">
+            <% @areas.order(:area_id).each do |area| %>
+              <%= area.area %>
+            <% end %>
+          </p>
+        </div>
+        <div class="group__detail">
+          <p class="detail__title">募集パート</p>
+          <p class="detail__message">
+            <% @parts.order(:part_id).each do |part| %>
+              <%= part.part %>
+            <% end %>
+          </p>
+        </div>
+        <div class="group__detail">
+          <p class="detail__title">投稿者</p>
+          <p class="detail__message">
+            <%= @group.user.name %>
+          </p>
+        </div>
+        <% if user_signed_in? && current_user.id == @group.user_id %>
+          <div class="group__manage">
+            <%= link_to "編集する", edit_group_path, class: :group__btn %>
+            <%= link_to "削除する", group_path, data: { turbo_method: :delete }, class: :group__btn %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
