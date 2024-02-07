@@ -11,7 +11,7 @@
         <div class="group__detail">
           <p class="detail__title">活動地域</p>
           <p class="detail__message">
-            <% @areas.each do |area| %>
+            <% @areas.order(:area_id).each do |area| %>
               <%= area.area %>
             <% end %>
           </p>
@@ -19,7 +19,7 @@
         <div class="group__detail">
           <p class="detail__title">募集パート</p>
           <p class="detail__message">
-            <% @parts.each do |part| %>
+            <% @parts.order(:part_id).each do |part| %>
               <%= part.part %>
             <% end %>
           </p>
