@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_06_140728) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_08_142528) do
   create_table "areas", charset: "utf8", force: :cascade do |t|
     t.string "area", null: false
     t.datetime "created_at", null: false
@@ -44,6 +44,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_140728) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
+  create_table "members", charset: "utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
   create_table "parts", charset: "utf8", force: :cascade do |t|
     t.string "part", null: false
     t.datetime "created_at", null: false
@@ -68,4 +77,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_06_140728) do
   add_foreign_key "group_parts", "groups"
   add_foreign_key "group_parts", "parts"
   add_foreign_key "groups", "users"
+  add_foreign_key "members", "users"
 end
