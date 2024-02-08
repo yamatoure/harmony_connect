@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_08_151352) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_08_151901) do
   create_table "areas", charset: "utf8", force: :cascade do |t|
     t.string "area", null: false
     t.datetime "created_at", null: false
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_151352) do
     t.index ["member_id"], name: "index_member_areas_on_member_id"
   end
 
+  create_table "member_parts", charset: "utf8", force: :cascade do |t|
+    t.bigint "member_id", null: false
+    t.bigint "part_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_member_parts_on_member_id"
+    t.index ["part_id"], name: "index_member_parts_on_part_id"
+  end
+
   create_table "members", charset: "utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "content"
@@ -88,5 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_08_151352) do
   add_foreign_key "groups", "users"
   add_foreign_key "member_areas", "areas"
   add_foreign_key "member_areas", "members"
+  add_foreign_key "member_parts", "members"
+  add_foreign_key "member_parts", "parts"
   add_foreign_key "members", "users"
 end
