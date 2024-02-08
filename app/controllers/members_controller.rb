@@ -9,6 +9,16 @@ class MembersController < ApplicationController
   end
 
   def create
-    
+    @member = Member.new(member_params)
+    if @member.save
+      redirect_to members_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+  def member_params
+    params.require(:member).permit(:title, :content, area_ids: [], part_ids: []).merge(user_id: current_user.id)
   end
 end
