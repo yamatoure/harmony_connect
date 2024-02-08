@@ -1,0 +1,2 @@
+class MemberArea < ApplicationRecord
+end
