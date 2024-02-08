@@ -17,6 +17,12 @@ class MembersController < ApplicationController
     end
   end
 
+  def show
+    @member = Member.find(params[:id])
+    @areas = @member.areas
+    @parts = @member.parts
+  end
+
   private
   def member_params
     params.require(:member).permit(:title, :content, area_ids: [], part_ids: []).merge(user_id: current_user.id)
