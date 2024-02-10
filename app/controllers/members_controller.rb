@@ -23,6 +23,22 @@ class MembersController < ApplicationController
     @parts = @member.parts
   end
 
+  def edit
+    @member = Member.find(params[:id])
+    unless current_user.id == @member.user_id
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @member = Member.find(params[:id])
+    if @member.update(member_params)
+      redirect_to members_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
   def member_params
     params.require(:member).permit(:title, :content, area_ids: [], part_ids: []).merge(user_id: current_user.id)
