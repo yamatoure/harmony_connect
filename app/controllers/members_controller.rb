@@ -39,6 +39,12 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    member = Member.find(params[:id])
+    member.destroy
+    redirect_to members_path
+  end
+
   private
   def member_params
     params.require(:member).permit(:title, :content, area_ids: [], part_ids: []).merge(user_id: current_user.id)
