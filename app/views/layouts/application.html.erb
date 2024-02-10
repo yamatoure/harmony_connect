@@ -20,7 +20,7 @@
           </div>
           <div class="nav__right">
             <%= link_to "グループを探す", groups_path, class: :nav__btn %>
-            <%= link_to "メンバーを探す", root_path, class: :nav__btn %>
+            <%= link_to "メンバーを探す", members_path, class: :nav__btn %>
             <% if user_signed_in? %>
               <%= link_to "マイページ", edit_user_path(current_user), class: :nav__btn %>
             <% else %>
