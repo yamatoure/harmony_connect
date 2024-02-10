@@ -5,7 +5,11 @@ class MembersController < ApplicationController
   end
 
   def new
-    @member = Member.new
+    if current_user.member.present?
+      redirect_to edit_member_path(current_user.member)
+    else
+      @member = Member.new
+    end
   end
 
   def create

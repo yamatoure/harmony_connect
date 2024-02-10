@@ -5,6 +5,7 @@ class Member < ApplicationRecord
   has_many :member_parts, dependent: :destroy
   has_many :parts, through: :member_parts
 
+  validates :user_id,  uniqueness: true
   validates :title,    presence: true
   validates :area_ids, presence: true
   validates :part_ids, presence: true
