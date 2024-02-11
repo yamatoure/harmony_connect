@@ -44,7 +44,13 @@ class GroupsController < ApplicationController
     group.destroy
     redirect_to groups_path
   end
-  
+
+  def search
+    search_area_params = params[:area_ids].compact_blank
+    search_part_params = params[:part_ids].compact_blank
+    @groups = Group.search(search_area_params, search_part_params)
+  end
+
   private
   def group_params
     params.require(:group).permit(:title, :content, area_ids: [], part_ids: []).merge(user_id: current_user.id)
