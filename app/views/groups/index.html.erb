@@ -1,35 +1,6 @@
 <main class="main">
   <div class="inner">
-
-    <%= form_with(url: search_groups_path, local: true,method: :get, class: "search-form") do |f| %>
-      <div class="field">
-        <%= f.label :area, "活動地域" %><br />
-        <% Area.all.each_slice(8) do |area_slice| %>
-          <div class="checkbox_group">
-            <%= f.collection_check_boxes :area_ids, area_slice, :id, :area do |b| %>
-              <span class="checkbox">
-                <%= b.label { b.check_box + b.text } %>
-              </span>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="field">
-      <%= f.label :part, "募集パート" %><br />
-      <div class="checkbox_group">
-        <%= f.collection_check_boxes :part_ids, Part.all, :id, :part do |b| %>
-            <span class="checkbox">
-              <%= b.label { b.check_box + b.text } %>
-            </span>      
-        <% end %>
-      </div>
-
-      <div class="actions">
-        <%= f.submit "検索する", class: :form__btn  %>
-      </div>
-    <% end %>
-
+    <%= render partial: "shared/search_form", locals: { url: search_groups_path } %>
     <h1>グループ一覧</h1>
     <div class="card_wrapper">
       <%= render partial: "group", collection: @groups %>
