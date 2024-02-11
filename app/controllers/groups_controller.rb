@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @groups = Group.all
+    @groups = Group.all.order("created_at DESC")
   end
 
   def new
@@ -48,7 +48,7 @@ class GroupsController < ApplicationController
   def search
     search_area_params = params[:area_ids].compact_blank
     search_part_params = params[:part_ids].compact_blank
-    @groups = Group.search(search_area_params, search_part_params)
+    @groups = Group.search(search_area_params, search_part_params).order("created_at DESC")
   end
 
   private
