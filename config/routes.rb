@@ -7,5 +7,9 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  resources :members
+  resources :members do
+    collection do
+      get 'search'
+    end
+  end
 end
