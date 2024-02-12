@@ -18,7 +18,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
+    @group = Group.includes(:areas, :parts).find(params[:id])
     @areas = @group.areas
     @parts = @group.parts
   end

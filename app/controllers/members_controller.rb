@@ -22,7 +22,7 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = Member.find(params[:id])
+    @member = Member.includes(:areas, :parts).find(params[:id])
     @areas = @member.areas
     @parts = @member.parts
   end
