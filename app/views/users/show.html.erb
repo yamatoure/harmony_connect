@@ -1,0 +1,39 @@
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h1 class="page-heading">
+        <%= "#{current_user.name}さんの情報"%>
+      </h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">名前</th>
+            <td class="table__col2"><%= current_user.name %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">メールアドレス</th>
+            <td class="table__col2"><%= current_user.email %></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <%= link_to "編集する", edit_user_path(current_user), class: :form__btn%>
+      <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :form__btn%>
+
+      <h2 class="page-heading">
+        <%= "#{current_user.name}さんのメンバー募集掲示一覧"%>
+      </h2>
+      <div class="card_wrapper">
+        <%= render partial: "groups/group", collection: @groups %>
+      </div>
+      <h2 class="page-heading">
+        <%= "#{current_user.name}さんの参加希望掲示"%>
+      </h2>
+      <div class="card_wrapper">
+        <% if @member.present? %>
+        <%= render partial: "members/member", locals: { member: @member } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
