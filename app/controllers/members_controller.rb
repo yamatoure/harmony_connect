@@ -22,14 +22,22 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = Member.includes(:areas, :parts).find(params[:id])
-    @areas = @member.areas
-    @parts = @member.parts
+    @member = Member.includes(:areas, :parts).find_by(id: params[:id])
+    if @member.present?
+      @areas = @member.areas
+      @parts = @member.parts
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
-    @member = Member.find(params[:id])
-    unless current_user.id == @member.user_id
+    @member = Member.find_by(id: params[:id])
+    if @member.present?
+      unless current_user.id == @member.user_id
+        redirect_to root_path
+      end
+    else
       redirect_to root_path
     end
   end
