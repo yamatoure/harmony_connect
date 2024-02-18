@@ -17,6 +17,7 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
+| title   | string     | null: false                    |
 | content | text       |                                |
 | user    | references | null: false, foreign_key: true |
 
@@ -32,6 +33,7 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
+| title   | string     | null: false                    |
 | content | text       |                                |
 | user    | references | null: false, foreign_key: true |
 
