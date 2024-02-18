@@ -33,6 +33,8 @@ end
 I18n.locale = "en"
 
 RSpec.configure do |config|
+  config.include SignInSupport
+  config.include CheckboxesSupport
   config.before(:suite) do
     Rails.application.load_seed
   end
