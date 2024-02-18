@@ -1,25 +1,33 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   def show
-    user = User.find(params[:id])
-    unless current_user.id == user.id
-      redirect_to root_path
+    user = User.find_by(id: params[:id])
+    if user.present?
+      unless current_user.id == user.id
+        redirect_to root_path
+      else
+        @groups = user.groups
+        @member = user.member
+      end
     else
-      @groups = user.groups
-      @member = user.member
+      redirect_to root_path
     end
   end
 
   def edit
-    user = User.find(params[:id])
-    unless current_user.id == user.id
+    user = User.find_by(id: params[:id])
+    if user.present?
+      unless current_user.id == user.id
+        redirect_to root_path
+      end
+    else
       redirect_to root_path
     end
   end
 
   def update
     if current_user.update(user_params)
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       render :edit, status: :unprocessable_entity
     end
