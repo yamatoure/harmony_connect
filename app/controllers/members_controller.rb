@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   def index
-    @members = Member.all
+    @members = Member.all.order("created_at DESC")
   end
 
   def new
@@ -22,7 +22,7 @@ class MembersController < ApplicationController
   end
 
   def show
-    @member = Member.find(params[:id])
+    @member = Member.includes(:areas, :parts).find(params[:id])
     @areas = @member.areas
     @parts = @member.parts
   end
@@ -47,6 +47,12 @@ class MembersController < ApplicationController
     member = Member.find(params[:id])
     member.destroy
     redirect_to members_path
+  end
+
+  def search
+    search_area_params = params[:area_ids].compact_blank
+    search_part_params = params[:part_ids].compact_blank
+    @members = Member.search(search_area_params, search_part_params).order("created_at DESC")
   end
 
   private
