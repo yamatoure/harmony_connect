@@ -18,14 +18,22 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.includes(:areas, :parts).find(params[:id])
-    @areas = @group.areas
-    @parts = @group.parts
+    @group = Group.includes(:areas, :parts).find_by(id: params[:id])
+    if @group.present?
+      @areas = @group.areas
+      @parts = @group.parts
+    else
+      redirect_to root_path
+    end
   end
 
   def edit
-    @group = Group.find(params[:id])
-    unless current_user.id == @group.user_id
+    @group = Group.find_by(id: params[:id])
+    if @group.present?
+      unless current_user.id == @group.user_id
+        redirect_to root_path
+      end
+    else
       redirect_to root_path
     end
   end
