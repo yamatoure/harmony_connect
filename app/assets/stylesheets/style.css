@@ -37,9 +37,10 @@ a {
 /* ヘッダー */
 
 .header {
+  position: sticky;
+  top: 0;
   background-color: #ffffff;
-  padding: 20px 0;
-
+  padding: 10px 0;
 }
 .inner {
   width: 1024px;
@@ -61,13 +62,25 @@ a {
   color: #1e2022;
   text-decoration: none;
   user-select: none;
-  border: 1px #1e2022 solid;
   border-radius: 3px;
   transition: 0.4s ease;
 }
-.nav__btn:hover{
-  color: #fff;
-  background: #87CEFA;
+.nav__groups {
+  background-color: rgb(0, 200, 0);
+  color: #ffffff;
+}
+.nav__groups:hover {
+  background: rgb(50, 220, 50);
+}
+.nav__members {
+  background-color: #0051e0;
+  color: #ffffff;
+}
+.nav__members:hover {
+  background-color: #2072ff;
+}
+.nav__user:hover{
+  background-color: #e0e0e0;
 }
 
 .nav__logout{
@@ -108,19 +121,22 @@ a {
   color: #fff;
   text-decoration: none;
   user-select: none;
-  background: #87CEFA;
-  border: 1px #87CEFA solid;
+  background: #444;
+  border: 1px #444 solid;
   border-radius: 3px;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
   transition: 0.2s ease;
 }
 
 .form__btn:hover {
+  color: #444;
+  background-color: #fff;
+  border: 1px #444 solid;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
   cursor: pointer;
 }
 
-.checkbox_group {
+.checkboxes {
   margin-bottom: 10px;
 }
 
@@ -128,32 +144,22 @@ a {
   margin-right: 10px;
 }
 
-/* トップページ */
-
 /* メイン */
 
-/*
-
-.greeting{
-  margin-bottom: 20px;
-}
-.greeting__link{
-  text-decoration: underline;
-}
-.page-heading {
-  font-size: 30px;
-  margin-bottom: 28px;
-}
-*/
 .main {
-  background-color: #e6e6e6;
+  background-image: linear-gradient(90deg, rgba(168, 202, 240, 1), rgba(233, 240, 250, 1));
+  min-height: calc(100vh - 93px);
 }
+
+/* トップページ */
+
 .top {
-  min-height: calc(100vh - 113px);
   text-align: center;
+  padding-top: 100px;
 }
 .top h2 {
   font-size: 3em;
+  color: #0192a6;
 }
 .itemlist {
   display: flex;
@@ -165,61 +171,110 @@ a {
   flex-direction: column;
   text-align: center;
   width: 40%;
-  border: 1px #000000 solid;
   padding-bottom: 1em;
+  background-color: #ffffff;
+  border-radius: 20px;
 }
 .top__btn {
   width: 50%;
-  border: 1px #000000 solid;
   padding: 1em;
   margin: 0 auto;
   margin-bottom: 1em;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-radius: 50px;
+  transition: 0.4s ease;
 }
-/* グループ一覧ページ */
+.group {
+  color: rgb(0, 200, 0);
+}
+.top__groups__btn {
+  background-color: rgb(0, 200, 0);
+  border: 2px rgb(0, 200, 0) solid;
+  color: #ffffff;
+}
+.top__groups__btn:hover {
+  background: rgb(50, 220, 50);
+  border: 2px rgb(50, 220, 50) solid;
+}
+.top__group__btn {
+  border: 2px rgb(0, 200, 0) solid;
+  color: rgb(0, 200, 0);
+}
+.top__group__btn:hover {
+  border: 2px rgb(50, 220, 50) solid;
+  color: rgb(50, 220, 50);
+}
+.member {
+  color: #0051e0;
+}
+.top__members__btn {
+  background-color: #0051e0;
+  border: 2px #0051e0 solid;
+  color: #ffffff;
+}
+.top__members__btn:hover {
+  background: #2072ff;
+  border: 2px #2072ff solid;
+}
+.top__member__btn {
+  border: 2px #0051e0 solid;
+  color: #0051e0
+}
+.top__member__btn:hover {
+  border: 2px #2072ff solid;
+  color: #2072ff;
+}
+
+/* 一覧ページ */
+
+.search_item {
+  font-weight: bold;
+}
 .card_wrapper {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 .card {
-  width: calc((100% - 50px) / 3);
-  margin-bottom: 40px;
-  font-size: 20px;
-  background-color: #87CEFA;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 5% 40px 0;
+  padding: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  transition: 0.4s ease;
 }
-/*
-.card__img {
-  margin-bottom: 16px;
+.card:nth-child(3n){
+  margin-right: 0;
 }
-.card__title {
-  display: block;
+.card_title {
   font-size: 20px;
-  margin-bottom: 8px;
   font-weight: bold;
 }
-.card__summary {
-  font-size: 16px;
+.card_user_name {
+  font-size: 15px;
 }
-.card__user {
-  display: block;
-  font-size: 12px;
-  color: #999;
-  text-align: right;
-  text-decoration: underline;
+.group__card:hover {
+  color: #fff;
+  background-color:rgb(0, 200, 0);
 }
-*/
-
+.member__card:hover {
+  color: #fff;
+  background-color: #0051e0;
+}
 
 /* 詳細ページ */
 
-.group__wrapper{
+.detail__wrapper{
   min-height: calc(100vh - 161px);
 }
-.group__wrapper h1{
+.detail__wrapper h1{
   text-align: center;
 }
-.group__detail{
+.detail__item{
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -232,30 +287,30 @@ a {
 .detail__message{
   font-size: 20px;
 }
-.group__manage{
+.detail__manage{
   display: flex;
   justify-content: center;
   padding: 16px;
 }
-.group__btn{
+.manage__btn{
   display: block;
   padding: 0.4em 1.6em;
   font-size: 1em;
-  color: #999;
+  color: #fff;
+  background: #444;
   text-decoration: none;
   user-select: none;
-  border: 1px #999 solid;
+  border: 1px #444 solid;
   border-radius: 3px;
   transition: 0.4s ease;
   margin: 0 4px;
 }
-.group__btn:hover{
-  color: #fff;
-  background: #999;
+.manage__btn:hover{
+  color: #444;
+  background: #fff;
 }
+
 /* ユーザーページ */
-
-
 
 .user__wrapper{
   min-height: calc(100vh - 161px);
