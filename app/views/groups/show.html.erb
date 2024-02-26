@@ -5,7 +5,7 @@
         <div class="detail__item">
           <p class="detail__title">募集内容</p>
           <p class="detail__message">
-            <%= @group.content %>
+            <%= simple_format(@group.content, class: 'format__text') %>
           </p>
         </div>
         <div class="detail__item">
@@ -28,6 +28,12 @@
           <p class="detail__title">投稿者</p>
           <p class="detail__message">
             <%= @group.user.name %>
+          </p>
+        </div>
+        <div class="detail__item">
+          <p class="detail__title">連絡先</p>
+          <p class="detail__message">
+            <%= @group.user.email %>
           </p>
         </div>
         <% if user_signed_in? && current_user.id == @group.user_id %>

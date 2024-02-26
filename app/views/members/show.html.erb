@@ -5,7 +5,7 @@
         <div class="detail__item">
           <p class="detail__title">紹介文</p>
           <p class="detail__message">
-            <%= @member.content %>
+            <%= simple_format(@member.content, class: 'format__text') %>
           </p>
         </div>
         <div class="detail__item">
@@ -28,6 +28,12 @@
           <p class="detail__title">投稿者</p>
           <p class="detail__message">
             <%= @member.user.name %>
+          </p>
+        </div>
+        <div class="detail__item">
+          <p class="detail__title">連絡先</p>
+          <p class="detail__message">
+            <%= @member.user.email %>
           </p>
         </div>
         <% if user_signed_in? && current_user.id == @member.user_id %>
