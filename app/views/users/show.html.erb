@@ -17,8 +17,10 @@
         </tbody>
       </table>
 
-      <%= link_to "編集する", edit_user_path(current_user), class: :form__btn%>
-      <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :form__btn%>
+      <div class="actions">
+        <%= link_to "編集する", edit_user_path(current_user), class: :form__btn%>
+        <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: :form__btn%>
+      </div>
 
       <h2 class="page-heading">
         <%= "#{current_user.name}さんのメンバー募集掲示一覧"%>

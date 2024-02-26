@@ -1,14 +1,14 @@
 <div class="main">
   <div class="inner">
-    <div class="group__wrapper">
+    <div class="detail__wrapper">
       <h1><%= @member.title %></h1>
-        <div class="group__detail">
+        <div class="detail__item">
           <p class="detail__title">紹介文</p>
           <p class="detail__message">
             <%= @member.content %>
           </p>
         </div>
-        <div class="group__detail">
+        <div class="detail__item">
           <p class="detail__title">活動地域</p>
           <p class="detail__message">
             <% @areas.order(:area_id).each do |area| %>
@@ -16,7 +16,7 @@
             <% end %>
           </p>
         </div>
-        <div class="group__detail">
+        <div class="detail__item">
           <p class="detail__title">希望パート</p>
           <p class="detail__message">
             <% @parts.order(:part_id).each do |part| %>
@@ -24,16 +24,16 @@
             <% end %>
           </p>
         </div>
-        <div class="group__detail">
+        <div class="detail__item">
           <p class="detail__title">投稿者</p>
           <p class="detail__message">
             <%= @member.user.name %>
           </p>
         </div>
         <% if user_signed_in? && current_user.id == @member.user_id %>
-          <div class="group__manage">
-            <%= link_to "編集する", edit_member_path, class: :group__btn %>
-            <%= link_to "削除する", member_path, data: { turbo_method: :delete }, class: :group__btn %>
+          <div class="detail__manage">
+            <%= link_to "編集する", edit_member_path, class: :manage__btn %>
+            <%= link_to "削除する", member_path, data: { turbo_method: :delete }, class: :manage__btn %>
           </div>
         <% end %>
     </div>

@@ -1,8 +1,8 @@
 <%= form_with(url: url, local: true,method: :get, class: "search-form") do |f| %>
   <div class="field">
-    <%= f.label :area, "活動地域" %><br />
+    <div class="search_item"><%= f.label :area, "活動地域" %><br /></div>
     <% Area.all.each_slice(8) do |area_slice| %>
-      <div class="checkbox_group">
+      <div class="checkboxes">
         <%= f.collection_check_boxes :area_ids, area_slice, :id, :area do |b| %>
           <span class="checkbox">
             <%= b.label { b.check_box + b.text } %>
@@ -13,13 +13,14 @@
   </div>
 
   <div class="field">
-  <%= f.label :part, "募集パート" %><br />
-  <div class="checkbox_group">
-    <%= f.collection_check_boxes :part_ids, Part.all, :id, :part do |b| %>
-        <span class="checkbox">
-          <%= b.label { b.check_box + b.text } %>
-        </span>      
-    <% end %>
+    <div class="search_item"><%= f.label :part, "募集パート" %><br /></div>
+    <div class="checkboxes">
+      <%= f.collection_check_boxes :part_ids, Part.all, :id, :part do |b| %>
+          <span class="checkbox">
+            <%= b.label { b.check_box + b.text } %>
+          </span>      
+      <% end %>
+    </div>
   </div>
 
   <div class="actions">

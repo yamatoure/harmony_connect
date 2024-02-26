@@ -1,3 +1,4 @@
-<div class="card">
-  <%= link_to group.title, group_path(group.id)%>
-</div>
+<a href="<%= group_path(group.id) %>" class="card group__card">
+  <div class="card_title"><%= group.title %></div>
+  <div class="card_user_name"><%= "#{group.user.name}　(投稿日 #{l group.created_at})" %></div>
+</a>

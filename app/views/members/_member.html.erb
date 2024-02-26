@@ -1,3 +1,4 @@
-<div class="card">
-  <%= link_to member.title, member_path(member.id)%>
-</div>
+<a href="<%= member_path(member.id) %>" class="card member__card">
+  <div class="card_title"><%= member.title %></div>
+  <div class="card_user_name"><%= "#{member.user.name}　(登録日 #{l member.created_at})" %></div>
+</a>

@@ -19,12 +19,12 @@
             <%= link_to image_tag("logo.png", class: :logo), root_path %>
           </div>
           <div class="nav__right">
-            <%= link_to "グループを探す", groups_path, class: :nav__btn %>
-            <%= link_to "メンバーを探す", members_path, class: :nav__btn %>
+            <%= link_to "グループを探す", groups_path, class: "nav__btn nav__groups" %>
+            <%= link_to "メンバーを探す", members_path, class: "nav__btn nav__members" %>
             <% if user_signed_in? %>
-              <%= link_to "マイページ", user_path(current_user), class: :nav__btn %>
+              <%= link_to "マイページ", user_path(current_user), class: "nav__btn nav__user" %>
             <% else %>
-              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+              <%= link_to "ログイン", new_user_session_path, class: "nav__btn nav__user" %>
             <% end %>
           </div>
         </div>
