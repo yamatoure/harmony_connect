@@ -5,7 +5,7 @@
         <div class="detail__item">
           <p class="detail__title">募集内容</p>
           <p class="detail__message">
-            <%= @group.content %>
+            <%= simple_format(@group.content, class: 'format__text') %>
           </p>
         </div>
         <div class="detail__item">
