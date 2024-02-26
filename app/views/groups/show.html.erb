@@ -30,6 +30,12 @@
             <%= @group.user.name %>
           </p>
         </div>
+        <div class="detail__item">
+          <p class="detail__title">連絡先</p>
+          <p class="detail__message">
+            <%= @group.user.email %>
+          </p>
+        </div>
         <% if user_signed_in? && current_user.id == @group.user_id %>
           <div class="detail__manage">
             <%= link_to "編集する", edit_group_path, class: :manage__btn %>
