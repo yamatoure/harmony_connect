@@ -144,6 +144,10 @@ a {
   margin-right: 10px;
 }
 
+.field_with_errors {
+  display: inline;
+}
+
 /* メイン */
 
 .main {
