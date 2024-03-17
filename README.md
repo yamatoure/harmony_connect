@@ -1,120 +1,22 @@
-# テーブル設計
+# ハモコネ
 
-## users テーブル
+![トップページ画面](https://github.com/yamatoure/harmony_connect/assets/149588441/3acdaaea-f576-45a6-a929-9136f199010b)
 
-| Column             | Type   | Options                   |
-| ------------------ | ------ | ------------------------- |
-| name               | string | null: false               |
-| email              | string | null: false, unique: true |
-| encrypted_password | string | null: false               |
+## 概要
 
-### Association
+スクールのカリキュラム完了後、最終発表会までに作成したオリジナルアプリです。アカペラのメンバー募集掲示板のサービスになります。
 
-- has_many   :groups
-- belongs_to :member
+## サービス作成の背景
 
-## groups テーブル
+アカペラを始める際、サークルに加入していないとグループを結成することが難しい。サークルに加入せずとも、誰でも気軽にアカペラグループを結成したい人に向けて制作しました。また、プログラミング学習の一環として制作しました。
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| title   | string     | null: false                    |
-| content | text       |                                |
-| user    | references | null: false, foreign_key: true |
+## ER図
 
-### Association
+![ER図](https://github.com/yamatoure/harmony_connect/assets/149588441/d6e8b4b1-53d3-4904-92a3-9fc6ec1eb6b4)
 
-- belongs_to :user
-- has_many   :group_areas
-- has_many   :areas, through: :group_areas
-- has_many   :group_parts
-- has_many   :parts, through: :group_parts
+## 機能
 
-## members テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| title   | string     | null: false                    |
-| content | text       |                                |
-| user    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- has_many   :member_areas
-- has_many   :areas, through: :member_areas
-- has_many   :member_parts
-- has_many   :parts, through: :member_parts
-
-## areas　テーブル
-
-| Column  | Type       | Options     |
-| ------- | ---------- | ------------|
-| area    | string     | null: false |
-
-### Association
-
-- has_many :group_areas
-- has_many :groups, through: :group_areas
-- has_many :member_areas
-- has_many :members, through: :member_areas
-
-## parts テーブル
-
-| Column  | Type       | Options     |
-| ------- | ---------- | ----------- |
-| part    | string     | null: false |
-
-### Association
-
-- has_many :group_parts
-- has_many :groups, through: :group_parts
-- has_many :member_parts
-- has_many :members, through: :member_parts
-
-## group_areas テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| group   | references | null: false, foreign_key: true |
-| area    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :group
-- belongs_to :area
-
-## member_areas テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| member  | references | null: false, foreign_key: true |
-| area    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :member
-- belongs_to :area
-
-## group_parts テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| group   | references | null: false, foreign_key: true |
-| part    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :group
-- belongs_to :part
-
-## member_parts テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| member  | references | null: false, foreign_key: true |
-| part    | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :member
-- belongs_to :part
+- ユーザー管理機能
+- メンバー募集投稿機能
+- 参加希望登録機能
+- グループ、メンバー検索機能
