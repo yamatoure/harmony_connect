@@ -1,4 +1,4 @@
-# ハモコネ
+# ハモコネ(harmony connect)
 
 ![トップページ画面](https://github.com/yamatoure/harmony_connect/assets/149588441/3acdaaea-f576-45a6-a929-9136f199010b)
 
